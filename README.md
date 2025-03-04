@@ -1,78 +1,51 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-const Stack = createStackNavigator();
-
-const HomeScreen = ({ navigation }) => {
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Letters of Hope</Text>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Resources')}>
-        <Text style={styles.buttonText}>Mental Health Resources</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Directory')}>
-        <Text style={styles.buttonText}>Service Directory</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('RequestLetter')}>
-        <Text style={styles.buttonText}>Request a Letter</Text>
-      </TouchableOpacity>
-    </View>
+    <div style={styles.container}>
+      <h1 style={styles.header}>Letters of Hope</h1>
+      <button style={styles.button} onClick={() => alert('Navigating to Mental Health Resources')}>
+        Mental Health Resources
+      </button>
+      <button style={styles.button} onClick={() => alert('Navigating to Service Directory')}>
+        Service Directory
+      </button>
+      <button style={styles.button} onClick={() => alert('Navigating to Request a Letter')}>
+        Request a Letter
+      </button>
+    </div>
   );
 };
 
-const ResourcesScreen = () => (
-  <View style={styles.container}><Text style={styles.header}>Mental Health Resources</Text></View>
-);
-
-const DirectoryScreen = () => (
-  <View style={styles.container}><Text style={styles.header}>Service Directory</Text></View>
-);
-
-const RequestLetterScreen = () => (
-  <View style={styles.container}><Text style={styles.header}>Request a Letter</Text></View>
-);
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Resources" component={ResourcesScreen} />
-        <Stack.Screen name="Directory" component={DirectoryScreen} />
-        <Stack.Screen name="RequestLetter" component={RequestLetterScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
-
-const styles = StyleSheet.create({
+const styles = {
   container: {
-    flex: 1,
-    justifyContent: 'center',
+    display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh',
     backgroundColor: '#F1F8F6',
+    fontFamily: 'Arial, sans-serif',
   },
   header: {
-    fontSize: 24,
+    fontSize: '24px',
     fontWeight: 'bold',
     color: '#545454',
-    marginBottom: 20,
+    marginBottom: '20px',
   },
   button: {
     backgroundColor: '#9FC8BC',
-    padding: 15,
-    margin: 10,
-    borderRadius: 10,
-    width: '80%',
-    alignItems: 'center',
-  },
-  buttonText: {
     color: '#FFFFFF',
-    fontSize: 16,
+    fontSize: '16px',
     fontWeight: 'bold',
+    padding: '15px',
+    margin: '10px',
+    border: 'none',
+    borderRadius: '10px',
+    cursor: 'pointer',
+    width: '80%',
+    maxWidth: '300px',
   },
-});
+};
 
-
+export default App;
